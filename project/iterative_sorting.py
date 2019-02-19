@@ -1,26 +1,30 @@
 # Complete the selection_sort() function below in class with your instructor
-def selection_sort( arr ):
-    # loop through n-1 elements
-    for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc) 
-             
-
-
-
-        # TO-DO: swap
-
-
-
-
+def selection_sort(arr):
+    arr_length = len(arr)
+    for start_index in range(arr_length):
+        swap_index = None
+        for search_index in range(start_index, arr_length):
+            if(swap_index is None):
+                swap_index = search_index
+                continue
+            if(arr[search_index] < arr[swap_index]):
+                swap_index = search_index
+        arr[start_index], arr[swap_index] = arr[swap_index], arr[start_index]
     return arr
 
 
 # TO-DO: implement the Insertion Sort function below
-def insertion_sort( arr ):
-
+def insertion_sort(arr):
+    for current in range(1, len(arr)):
+        current_value = arr[current]
+        swap = current
+        for test_index in range(current-1, -1, -1):
+            # End must be -1, instead of 0, as range stops /before/ End.
+            if(arr[test_index] > current_value):
+                swap = test_index
+            else:
+                break
+        arr[swap+1:current+1], arr[swap] = arr[swap:current], arr[current]
     return arr
 
 
