@@ -16,6 +16,9 @@ def selection_sort(arr):
 # TO-DO: implement the Insertion Sort function below
 def insertion_sort(arr):
     for current in range(1, len(arr)):
+        # For each index in the unsorted portion of the list, find the proper
+        # place in the sorted portion of the list in which to place its
+        # associated value. Search from back to front to preserve sort order.
         current_value = arr[current]
         swap = current
         for test_index in range(current-1, -1, -1):
@@ -24,7 +27,11 @@ def insertion_sort(arr):
                 swap = test_index
             else:
                 break
+        # Perform the shift + swap:
         arr[swap+1:current+1], arr[swap] = arr[swap:current], arr[current]
+        # Shift entire array by one space, while moving value at end to start.
+        # This isn't how I'd normally perform such an action, but I'm trying
+        # to reinforce what I learned of list comprehensions.
     return arr
 
 
